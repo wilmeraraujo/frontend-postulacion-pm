@@ -16,7 +16,7 @@ export class PagoSoportadoComponent implements OnInit{
     this.getPagoSoportado();
   }
 
-  displayedColumns:string[] = ['id','nit','razonSocial','valorSoportado','valorPagar'];
+  displayedColumns:string[] = ['id','nit','razonSocial','valorPosiblePago','valorPagar'];
   dataSource = new MatTableDataSource<PagoSoportadoElement>();
 
   @ViewChild(MatPaginator)
@@ -24,7 +24,7 @@ export class PagoSoportadoComponent implements OnInit{
 
   getPagoSoportado(): void {
     this.pagoSoportadoService.getPagoSoportado().subscribe((data: any) => {
-      this.processPagoSoportadoResponse(data);
+      this.processPagoSoportadoSuministroResponse(data);
     }, (error: any) => {
       console.log("error: ", error);
     });
@@ -35,20 +35,20 @@ export class PagoSoportadoComponent implements OnInit{
         return this.getPagoSoportado();
     }
     this.pagoSoportadoService.searchPagoSoportado(term).subscribe((data: any) =>{
-      this.processPagoSoportadoResponse(data);
+      this.processPagoSoportadoSuministroResponse(data);
     },(error: any) =>{
       console.log("error: ", error);
     });
 
   }
 
-  processPagoSoportadoResponse(resp: any) {
+  processPagoSoportadoSuministroResponse(resp: any) {
     if (Array.isArray(resp)) {
       const dataPagoSoportado: PagoSoportadoElement[] = resp.map((item: any) => ({
         id: item.id,
         nit: item.nit,
         razonSocial: item.razonSocial,
-        valorPagar: item.valorPagar
+        valorPosiblePago: item.valorPosiblePago
       }));
 
       this.dataSource = new MatTableDataSource<PagoSoportadoElement>(dataPagoSoportado);
@@ -66,5 +66,5 @@ export interface PagoSoportadoElement{
   id: number;
   nit: string;
   razonSocial: string;
-  valorPagar: number;
+  valorPosiblePago: number;
 }

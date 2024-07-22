@@ -20,13 +20,8 @@ export class SidenavComponent implements OnInit{
       icon:"home"
     },
     {
-      name:"Pago Soportado",
-      route:"pago-soportado",
-      icon:"attach_money"
-    },
-    {
-      name:"Pago",
-      route:"home",
+      name:"Pago soportado",
+      route:"pago-soportado-suministro",
       icon:"monetization_on"
     },
   ]

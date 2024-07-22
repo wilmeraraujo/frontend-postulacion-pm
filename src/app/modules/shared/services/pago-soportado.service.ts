@@ -15,7 +15,7 @@ export class PagoSoportadoService {
    * @returns
    */
   getPagoSoportado(){
-    const endpoint = `${base_url}/pago-soportado`;
+    const endpoint = `${base_url}/pago-soportado-factura`;
     return this.http.get(endpoint);
   }
   /**
@@ -24,7 +24,7 @@ export class PagoSoportadoService {
    * @returns
    */
   searchPagoSoportado(razonSocial: any){
-    const endpoint = `${base_url}/pago-soportado/search-razon-social/${razonSocial}`;
+    const endpoint = `${base_url}/pago-soportado-factura/search-razon-social/${razonSocial}`;
     return this.http.get(endpoint);
   }
 }
